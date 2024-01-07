@@ -1,5 +1,6 @@
 :root {
     --bg-color : #b5b5b5;
+    --black-color :  #6b6b6b;
 }
 
 * {
@@ -11,10 +12,6 @@
     padding: 0;
 }
 
-.foo {
-    width: 700px;
-    margin: 24px auto;
-}
 
 .header {
     display: flex;
@@ -26,14 +23,33 @@
 
 .header_lists {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
     font-size: 24px;
+}
+
+.header_item:not(:first-child) {
+    margin-left: 24px;
 }
 
 .search_box {
     margin-left: 24px;
+}
+
+.searchInput {
+    margin-left: 8px;
+    outline: none;
+    border: none;
+    padding: 4px;
+}
+
+.submitButton {
+    padding: 4px;
+    background-color: var(--black-color);
+    border: none;
+}
+
+.main {
+    width: 700px;
+    margin: 24px auto;
 }
 
 .footer {
