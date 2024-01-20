@@ -2,11 +2,24 @@
 <html lang="ja">
 <head>
     <%- include("./_share/metadata.ejs") %>
-    <title>Document</title>
+    <title>Home</title>
     <%- include("./_share/stylesheet.ejs") %>
 </head>
 <body>
-    <h1>hello world</h1>
+    <%- include('./_share/navbar.ejs') %>
+    <main class="main">
+        <h1>hello world</h1>
+        <div class="container">
+            <!-- jsのループで回す -->
+            <%- include('./_share/post.ejs') %>
+            <%- include('./_share/post.ejs') %>
+            <%- include('./_share/post.ejs') %>
+            <%- include('./_share/post.ejs') %>
+            <%- include('./_share/post.ejs') %>
+            <%- include('./_share/post.ejs') %>
+        </div>
+    </main>
+    <%- include('./_share/footer.ejs') %>
 </body>
-    <%- include('./_share/js.ejs') %>
+    <%- include('./_share/libjs.ejs') %>
 </html>
