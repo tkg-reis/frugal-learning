@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 // to home page
 router.get("/" , (req, res) => {
+    
     res.render("./index.ejs");
 });
 
