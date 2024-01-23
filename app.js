@@ -2,13 +2,12 @@ const port = process.env.PORT | 3000;
 const express = require('express');
 const path = require('path');
 const favicon = require("serve-favicon");
-const fs = require('fs');
-
 const bodyParser = require('body-parser');
-const logger = require('./lib/log/logger.js');
-const applicationLogger = require("./lib/log/applicationlogger.js");
-const accessLogger = require("./lib/log/accessLogger.js");
+// const logger = require('./lib/log/logger.js');
+// const applicationLogger = require("./lib/log/applicationlogger.js");
+// const accessLogger = require("./lib/log/accessLogger.js");
 const app = express();
+
 
 // テンプレートエンジンの有効化
 app.set('view engine' , 'ejs');
