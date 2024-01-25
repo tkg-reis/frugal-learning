@@ -6,22 +6,39 @@ env.config();
 // databaseの接続情報
 
 // detabaseへ接続する処理
-const client = new MongoClient(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const client = new MongoClient(process.env.MONGO_URI, { serverApi: ServerApiVersion.v1 });
 
+// database接続処理
+// ここでデータベースと該当のテーブルに接続する処理を記載。
 async function getCollection() {
     try {
         await client.connect();
-        client.db('place_info_master');
-        console.log("connected");
-        // return db.collection('books');
+        const db = client.db('place_info_master');
+        return db.collection("place_info_master");
     } catch(e) {
         console.error(e);
         await client.close();
     }
 }
 
-getCollection();
+async function getAllInfo() {
+    const col = await getCollection();
+    let cursor = col.find({name: 'Destiny USA',});
+    const result = await cursor.toArray();
+    console.log(result);
+    await client.close();
+}
 
+// getAllInfo();
+// ドキュメント形式なので、過去に登録されたデータに遵守する必要は必ずしも無い
+async function insertInfo() {
+    const col = await getCollection();
+    let result = await col.insertOne({title : "yahoo"});
+    console.log(result);
+    await client.close();
+}
+
+insertInfo();
 //select sql
 // console.log("connecting now");
 // const sqlSelectSentence = 'SELECT * FROM frugal-learning-places;'
