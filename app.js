@@ -12,6 +12,7 @@ const app = express();
 // テンプレートエンジンの有効化
 app.set('view engine' , 'ejs');
 app.use(bodyParser.json());
+// postの受け取り処理を可能にする
 app.use(express.urlencoded({ extended: true }));
 
 // サーバーサイドの隠蔽
