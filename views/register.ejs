@@ -9,7 +9,7 @@
     <%- include('./_share/navbar.ejs') %>
     <main class="main">
         <h1>Register</h1>
-        <form action="/createConfirm" method="get" class="create_register-form">
+        <form action="/createConfirm" method="get" class="create_register-form" enctype="multipart/form-data">
         
             <div class="form_label-wrapper">
                 <label for="placeName" class="input_label">
@@ -21,7 +21,7 @@
                 <label for="placeImage" class="input_label">
                     place_image
                 </label>
-                <input type="file" id="placeImage" name="placeImage" class="place_name-input">
+                <input type="file"  accept="image/png image/jpeg" id="placeImage" name="placeImage" class="place_name-input">
             </div>
             <div class="form_label-wrapper">
                 <label for="googlePlace" class="input_label">

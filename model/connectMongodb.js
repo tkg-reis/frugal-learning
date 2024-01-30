@@ -28,23 +28,30 @@ async function getAllInfo() {
     console.log(result);
     await client.close();
 }
-
 // getAllInfo();
+
 // ドキュメント形式なので、過去に登録されたデータに遵守する必要は必ずしも無い
 async function insertInfo() {
     const col = await getCollection();
-    let result = await col.insertOne({title : "yahoo"});
+    let result = await col.insertOne({title : "yahoo"}); //insertMany
     console.log(result);
     await client.close();
 }
 
-insertInfo();
-//select sql
-// console.log("connecting now");
-// const sqlSelectSentence = 'SELECT * FROM frugal-learning-places;'
-// // return;
-// // クエリをデータベースに投げる
-// connnection.query(sqlSelectSentence , (err , result) => {
-//     if(err) throw console.error("sql error : " + err);
-//     console.log(result);
-// })
+// insertInfo();
+
+async function updateInfo() {
+    const col = await getCollection();
+    let result = await col.updateOne({});
+    console.log(result);
+    await client.close();
+}
+
+
+
+module.exports = {
+    getAllInfo,
+    insertInfo,
+    updateInfo,
+
+} ;
