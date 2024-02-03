@@ -8,20 +8,29 @@ const placeSchema = new Schema({
         required : true
     },
     placeImage : {
+        type : String ,
         data : Buffer,
         contentType : String,
     },
-    googleMapPoint : {
+    googlePlace : {
         type : String,
         required : true
     },
     review : {
         type : Number,
-        required : true
+        required : true,
+        get: function(val) {
+            return Math.round(val)
+        },
+        set : function(val) {
+            return Math.round(val)
+        }
     },
-    comments : String
-});
+    comment : {
+        type : String
+    }
+}, {timestamps : true});
 
-const PlaceModel = mongoose.model("place_schema", placeSchema);
+const PlaceModel = mongoose.model("place_info_master", placeSchema);
 
 module.exports = PlaceModel;
