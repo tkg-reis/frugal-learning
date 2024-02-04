@@ -25,6 +25,11 @@
   ```
 
 - mongodb network error  
- ```
-  https://stackoverflow.com/questions/55499175/how-to-fix-error-querysrv-erefused-when-connecting-to-mongodb-atlas
- ```
+  ```
+    https://stackoverflow.com/questions/55499175/how-to-fix-error-querysrv-erefused-when-connecting-to-mongodb-atlas
+   ```
+
+- ajax mongodb create
+  ```
+    https://stackoverflow.com/questions/75701761/mongooseerror-model-create-no-longer-accepts-a-callback
+  ```
