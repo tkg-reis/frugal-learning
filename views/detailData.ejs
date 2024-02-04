@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <%- include("./_share/metadata.ejs") %>
+    <title>detail</title>
+    <%- include("./_share/stylesheet.ejs") %>
+  </head>
+  <body>
+    <%- include('./_share/navbar.ejs') %>
+    <div class="detail_wrapper">
+      <h2><span class="detail_title">place</span><%= singleData.placeName %></h2>
+      <div class="detail_image_wrapper">
+        <span class="detail_title">image</span>
+        <img
+          src="<%= singleData.placeImage
+            %>"
+          alt=""
+        />
+      </div>
+      <p><span class="detail_title">googlemap</span><%= singleData.googlePlace %></p>
+      <p><span class="detail_title">review</span><%= singleData.review %></p>
+      <p><span class="detail_title">comments</span><%= singleData.comment %></p>
+      <div class="detail_ud_wrapper">
+        <form action="/updateConfirm" method="post">
+          <input type="hidden" value="<%= singleData._id %>" />
+          <input type="hidden" value="<%= singleData.placeName %>" />
+          <input
+            type="hidden"
+            value="<%= singleData.placeImage
+                %>"
+          />
+          <input type="hidden" value="<%= singleData.googlePlace%>" />
+          <input type="hidden" value="<%= singleData.review %>" />
+          <input type="hidden" value="<%= singleData.comment %>" />
+          <button type="submit" class="form_button">fix / update</button>
+        </form>
+        <form action="/deleteData" method="post">
+          <input type="hidden" value="<%= singleData._id %>" />
+          <input type="hidden" value="<%= singleData.placeName %>" />
+          <input
+            type="hidden"
+            value="<%= singleData.placeImage
+                %>"
+          />
+          <input type="hidden" value="<%= singleData.googlePlace%>" />
+          <input type="hidden" value="<%= singleData.review %>" />
+          <input type="hidden" value="<%= singleData.comment %>" />
+          <button type="submit" class="form_button">delete</button>
+        </form>
+      </div>
+    </div>
+    <%- include('./_share/footer.ejs') %>
+  </body>
+  <%- include('./_share/libjs.ejs') %>
+</html>

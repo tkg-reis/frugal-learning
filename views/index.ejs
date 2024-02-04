@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+  <head>
     <%- include("./_share/metadata.ejs") %>
     <title>Home</title>
     <%- include("./_share/stylesheet.ejs") %>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('./_share/navbar.ejs') %>
     <main class="main">
-        <h1>hello world</h1>
-        <div class="container">
-            <!-- jsのループで回す -->
-            <%- include('./_share/post.ejs') %>
-            <%- include('./_share/post.ejs') %>
-            <%- include('./_share/post.ejs') %>
-            <%- include('./_share/post.ejs') %>
-            <%- include('./_share/post.ejs') %>
-            <%- include('./_share/post.ejs') %>
-        </div>
+      <h1>frugal-learning-space</h1>
+      <div class="container">
+        <!-- jsのループで回す -->
+        <% allInfo.forEach(info => { %>
+        <a href="/<%= info._id %>" class="wrapper">
+          <div>
+            <h2 class="place_name-title"><%= info.placeName %></h2>
+            <div class="place_image-wrapper">
+              <img
+                class="place_image"
+                src="<%=info.placeImage%>"
+                width="300"
+                height="200"
+                alt="no suc"
+              />
+            </div>
+            <div class="google_map-wrapper"><%= info.googlePlace %></div>
+            <div class="rating-wrapper" style="font-size: 30px">
+              <%= info.review %>
+              <span class="rating_star">☆</span>
+              <span class="rating_star">☆</span>
+              <span class="rating_star">☆</span>
+              <span class="rating_star">☆</span>
+              <span class="rating_star">☆</span>
+            </div>
+            <div class="comments-wrapper">
+              <p class="comment"><%= info.comment %></p>
+            </div>
+          </div>
+        </a>
+        <% }); %>
+      </div>
     </main>
     <%- include('./_share/footer.ejs') %>
-</body>
-    <%- include('./_share/libjs.ejs') %>
+  </body>
+  <%- include('./_share/libjs.ejs') %>
 </html>

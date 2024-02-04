@@ -9,8 +9,7 @@ const placeSchema = new Schema({
     },
     placeImage : {
         type : String ,
-        data : Buffer,
-        contentType : String,
+        // required : true
     },
     googlePlace : {
         type : String,
