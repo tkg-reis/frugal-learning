@@ -2,14 +2,15 @@
 <html lang="ja">
 <head>
     <%- include("./_share/metadata.ejs") %>
-    <title>Home</title>
+    <title>register</title>
     <%- include("./_share/stylesheet.ejs") %>
 </head>
 <body>
     <%- include('./_share/navbar.ejs') %>
     <main class="main">
         <h1>Register</h1>
-        <form action="/createConfirm" method="get" class="create_register-form" enctype="multipart/form-data">
+        <h2 class="alert_message"><%= msg %></h2>
+        <form action="/" method="post" class="create_register-form" enctype="multipart/form-data">
         
             <div class="form_label-wrapper">
                 <label for="placeName" class="input_label">
@@ -34,7 +35,7 @@
                 <label for="review" class="input_label">
                     review_level
                 </label>
-                <select class="place_name-input" name="review">
+                <select class="place_name-input" name="review" id="review">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -49,8 +50,8 @@
                 <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
             </div>
             <div class="form_button-wrapper">
-                <button type="submit" class="form_button">
-                    confirm
+                <button type="submit" class="form_button" id="form_button" onclick="return sendCheck();">
+                    regist
                 </button>
             </div>
         </form>
