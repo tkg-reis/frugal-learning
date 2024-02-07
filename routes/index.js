@@ -18,13 +18,56 @@ router.get("/", async (req, res) => {
 });
 
 // to detail page
-router.get("/:id", async(req, res) => {
-    // idの部分は可変である。ダイナミックルーティング
-    // mongodbのfindOneメソッドと組み合わせる
-    // 個々のデータを拾うときに使用する。
-    const singleData = await PlaceModel.findById(req.params.id);
+router.get("/:id", async (req, res) => {
+  // idの部分は可変である。ダイナミックルーティング
+  // mongodbのfindOneメソッドと組み合わせる
+  // 個々のデータを拾うときに使用する。
+  const singleData = await PlaceModel.findById(req.params.id);
 
-    res.render("./detailData.ejs" , {singleData: singleData});
+  res.render("./detailData.ejs", { singleData: singleData });
+});
+
+router.get("/updateConfirm", (req, res) => {
+  const _registeredPlaceName = req.body.placeName;
+  const _registedPlaceImage = req.files;
+  const _registeredGooglePlace = req.body.googlePlace;
+  const _registeredReview = req.body.review;
+  const _registeredComments = req.body.comments;
+
+  res.render("./updateConfirm", {
+    placeName: _registeredPlaceName,
+    placeImage: _registedPlaceImage,
+    googlePlace: _registeredGooglePlace,
+    review: _registeredReview,
+    comments: _registeredComments,
+  });
+});
+// 更新処理
+router.get("/update/:id", async (req, res) => {
+  const targetUpdateData = await PlaceModel.findById(req.params.id);
+});
+
+router.get("/deleteConfirm", (req, res) => {
+  const _registeredPlaceName = req.body.placeName;
+  const _registedPlaceImage = req.files;
+  const _registeredGooglePlace = req.body.googlePlace;
+  const _registeredReview = req.body.review;
+  const _registeredComments = req.body.comments;
+
+  res.render("./deleteConfirm", {
+    placeName: _registeredPlaceName,
+    placeImage: _registedPlaceImage,
+    googlePlace: _registeredGooglePlace,
+    review: _registeredReview,
+    comments: _registeredComments,
+  });
+});
+
+// 削除処理
+
+router.get("/delete:id", async (req, res) => {
+  const targetDeleteDate = await PlaceModel.findById(req.params.id);
+  res.render("/deleteData.ejs", {targetDeleteDate});
 });
 
 // 登録処理 sql insert
@@ -37,12 +80,6 @@ router.post("/", upload.single("placeImage"), (req, res) => {
   const _review = req.body.review;
 
   const imagePath = path.resolve(".", "/uploads", req.file.filename);
-
-  console.log(imagePath);
-  console.log(__dirname);
-  console.log(__filename);
-  console.log(_placeImage);
-  console.log(req.body);
   if (
     _placeName == "" ||
     _placeImage == undefined ||
