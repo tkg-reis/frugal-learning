@@ -48,6 +48,7 @@ router.get("/update/:id", async (req, res) => {
 });
 
 router.get("/deleteConfirm", (req, res) => {
+  const _registeredId = req.body.id;
   const _registeredPlaceName = req.body.placeName;
   const _registedPlaceImage = req.files;
   const _registeredGooglePlace = req.body.googlePlace;
@@ -55,6 +56,7 @@ router.get("/deleteConfirm", (req, res) => {
   const _registeredComments = req.body.comments;
 
   res.render("./deleteConfirm", {
+    _id : _registeredId,
     placeName: _registeredPlaceName,
     placeImage: _registedPlaceImage,
     googlePlace: _registeredGooglePlace,

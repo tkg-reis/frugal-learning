@@ -7,11 +7,47 @@
   </head>
   <body>
     <%- include('./_share/navbar.ejs') %>
-    <div class="update_confirm__wrapper">
-        <form action="/" method="post">
-            
+    <div class="delete_confirm__wrapper">
+        <form action="/delete<%= _id %>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="deleteId" value="<%= _id %>">
+            <label for="deletePlaceName">
+              現在の場所の名前:
+              <span>
+                <%= placeName %>
+              </span>
+              <input type="text" id="deletePlaceName" name="deletePlaceName">
+            </label>
+            <label for="newPlaceImage">
+              現在の場所の画像:
+              <span>
+                <%= placeName %>
+                <img src="" alt="">
+              </span>
+              <input type="file" accept="image/*" name="newPlaceImage">
+            </label>
+            <label for="">
+              現在の場所の名前:
+              <span>
+                <%= placeName %>
+              </span>
+              <input type="text" name="newPlaceName">
+            </label>
+            <label for="">
+              現在の場所の名前:
+              <span>
+                <%= placeName %>
+              </span>
+              <input type="text" name="newPlaceName">
+            </label>
+            <label for="">
+              現在の場所の名前:
+              <span>
+                <%= placeName %>
+              </span>
+              <input type="text" name="newPlaceName">
+            </label>
             <button type="submit">
-                fix / update
+                delete
             </button>
         </form>
     </div>
