@@ -12,7 +12,7 @@
       <div class="container">
         <!-- jsのループで回す -->
         <% allInfo.forEach(info => { %>
-        <a href="/<%= info._id %>" class="wrapper">
+        <a href="/api/<%= info._id %>" class="wrapper">
           <div>
             <h2 class="place_name-title"><%= info.placeName %></h2>
             <div class="place_image-wrapper">
